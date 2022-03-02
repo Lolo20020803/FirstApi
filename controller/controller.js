@@ -1,7 +1,7 @@
 const User = require("../model/userModel");
 
 function getUsuarioById(req,res){
-    User.findById(req.params.userId,(err,userData)=>{
+    User.findById(req.params.id,(err,userData)=>{
     if(err) {
         return res.status(400).send(error.message);
     }
