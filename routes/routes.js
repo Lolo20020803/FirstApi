@@ -1,10 +1,11 @@
 const {Router} = require('express');
 
-const path = require("../controller/controller");
+const controller = require("../controller/controller");
 
 const router = Router();
 
-router.get()
+router.getUsuario("/getUsuario",controller.getUsuario);
 
+router.postUsuario("/postUsuario",controller.postUsuario);
 
 module.exports = router;

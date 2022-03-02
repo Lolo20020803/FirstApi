@@ -1,8 +1,13 @@
 const req = require("../model/userModel");
 
-function getDates(req,res){
+function getUsuario(req,res){
+
+}
+
+function postUsuario(req,res){
+    
 
 }
 
 
-module.exports = controller;
+module.exports = {getUsuario,postUsuario};
