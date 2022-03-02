@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { pbkdf2Sync, randomBytes } = require('crypto');
 
 const { Schema } = mongoose;
  //Creation of mongoose schema
