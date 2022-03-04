@@ -1,6 +1,6 @@
 const express = require('express');
 
-const userPath = require('./routes/routes')
+const userPath = require('./routes/userRoutes')
 
 const app = express();
 
