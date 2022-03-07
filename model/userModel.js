@@ -14,7 +14,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: [true,'Email required'],
+    required: [true, 'Email required'],
   },
 });
 
