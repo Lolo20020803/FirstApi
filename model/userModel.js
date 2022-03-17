@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { randomByte, pbkdf2Sync } = require('crypto');
+const { randomBytes, pbkdf2Sync } = require('crypto');
 
 const { Schema } = mongoose;
 
@@ -16,7 +16,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: [true, 'Email required'],
   },
   password: {
     type: String,
@@ -31,7 +30,7 @@ const userSchema = new Schema({
 function hashPasword(next) {
   const user = this;
 
-  user.saltPass = randomByte(16).toString('hex');
+  user.saltPass = randomBytes(16).toString('hex');
 
   if (user.isModified('password')) {
     user.password = pbkdf2Sync(user.password, user.saltPass, 100000, 64, 'sha512');
@@ -42,8 +41,15 @@ function comparePass(pass) {
   const user = this;
   return user.password === pbkdf2Sync(pass, user.saltPass, 100000, 64, 'sha512');
 }
+function createEmail(next) {
+  const user = this;
+  const emailPrefab = '@mequieromorir.com';
+  user.email = user.name + user.surname + emailPrefab;
+  return next();
+}
 
 userSchema.pre('save', hashPasword);
+userSchema.pre('save', createEmail);
 userSchema.methods.comparePass = comparePass;
 
 module.exports = mongoose.model('User', userSchema);
