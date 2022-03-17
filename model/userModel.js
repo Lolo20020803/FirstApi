@@ -43,8 +43,7 @@ function comparePass(pass) {
 }
 function createEmail(next) {
   const user = this;
-  const emailPrefab = '@mequieromorir.com';
-  user.email = user.name + user.surname + emailPrefab;
+  user.email = (`${user.name}.${user.surname}@mequieromorir.com`).toLocaleLowerCase();
   return next();
 }
 
