@@ -8,6 +8,7 @@ function getUsuarioById(req, res) {
     return res.send(userData);
   });
 }
+
 function getUserByEmail(req, res) {
   User.findOne({ email: req.params.email }, (err, userData) => {
     if (err) return res.status(400).send(`Erorr in email search: ${err.message}`);
@@ -41,5 +42,5 @@ module.exports = {
   createUser,
   deleteUser,
   updateUser,
-  getUserByEmail,
+ getUserByEmail,
 };
