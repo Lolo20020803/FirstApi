@@ -33,13 +33,13 @@ function hashPasword(next) {
   user.saltPass = randomBytes(16).toString('hex');
 
   if (user.isModified('password')) {
-    user.password = pbkdf2Sync(user.password, user.saltPass, 100000, 64, 'sha512');
+    user.password = pbkdf2Sync(user.password, user.saltPass, 100000, 64, 'sha512').toString('hex');
   }
   return next();
 }
 function comparePass(pass) {
   const user = this;
-  return user.password === pbkdf2Sync(pass, user.saltPass, 100000, 64, 'sha512');
+  return user.password === pbkdf2Sync(pass, user.saltPass, 100000, 64, 'sha512').toString('hex');
 }
 function createEmail(next) {
   const user = this;
