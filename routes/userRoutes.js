@@ -4,7 +4,7 @@ const controller = require('../controller/controller');
 
 const router = Router();
 
-router.get('/', controller.getAllUser);
+router.get('/', controller.getAllUser );
 router.get('/getUserId/:id', controller.getUsuarioById);
 router.get('/getUserEmail/:email', controller.getUserByEmail);
 
